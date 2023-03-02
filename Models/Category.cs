@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using dotnet_angular_blog.Models;
 
 namespace dotnet_angular_blog.Model
 {
@@ -9,5 +6,7 @@ namespace dotnet_angular_blog.Model
   {
     public int Id { get; set; }
     public string Name { get; set; }
+
+    public ICollection<PostCategory> PostCategories { get; set; }
   }
 }
