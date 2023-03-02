@@ -7,15 +7,15 @@ namespace dotnet_angular_blog.Model
 {
   public class Post
   {
-    int Id { get; set; }
-    string Title { get; set; }
-    string Image { get; set; }
-    string Summary { get; set; }
-    string Content { get; set; }
-    int ReadingTime { get; set; }
-    ICollection<Category> Categories { get; set; }
-    DateTime PostedAt { get; set; }
-    EnumPostPermission EnumPostPermission { get; set; }
-    UserProfile Author { get; set; }
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Image { get; set; }
+    public string Summary { get; set; }
+    public string Content { get; set; }
+    public int ReadingTime { get; set; }
+    public ICollection<Category> Categories { get; set; }
+    public DateTime PostedAt { get; set; }
+    public EnumPostPermission EnumPostPermission { get; set; }
+    public UserProfile Author { get; set; }
   }
 }

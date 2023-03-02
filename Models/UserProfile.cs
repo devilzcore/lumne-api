@@ -2,12 +2,12 @@ namespace dotnet_angular_blog.Model
 {
   public class UserProfile
   {
-    int Id { get; set; }
-    User UserId { get; set; }
+    public int Id { get; set; }
+    public User UserId { get; set; }
 
-    string Avatar { get; set; }
-    string Name { get; set; }
-    string LastName { get; set; }
-    string Bio { get; set; }
+    public string Avatar { get; set; }
+    public string Name { get; set; }
+    public string LastName { get; set; }
+    public string Bio { get; set; }
   }
 }
