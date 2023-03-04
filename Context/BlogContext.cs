@@ -17,18 +17,20 @@ namespace dotnet_angular_blog.Context
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<PostCategory>()
-      .HasKey(pc => new { pc.PostId, pc.CategoryId });
+      // base.OnModelCreating(modelBuilder);
 
-      modelBuilder.Entity<PostCategory>()
-      .HasOne(pc => pc.Post)
-      .WithMany(p => p.PostCategories)
-      .HasForeignKey(pc => pc.PostId);
+      // modelBuilder.Entity<PostCategory>()
+      //   .HasKey(pc => new { pc.PostId, pc.CategoryId });
 
-      modelBuilder.Entity<PostCategory>()
-      .HasOne(pc => pc.Category)
-      .WithMany(p => p.PostCategories)
-      .HasForeignKey(pc => pc.CategoryId);
+      // modelBuilder.Entity<PostCategory>()
+      //   .HasOne(pc => pc.Post)
+      //   .WithMany(p => p.PostCategories)
+      //   .HasForeignKey(pc => pc.PostId);
+
+      // modelBuilder.Entity<PostCategory>()
+      //   .HasOne(pc => pc.Category)
+      //   .WithMany(p => p.PostCategories)
+      //   .HasForeignKey(pc => pc.CategoryId);
     }
   }
 }
