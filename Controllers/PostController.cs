@@ -1,5 +1,9 @@
+using System.Security.Claims;
 using dotnet_angular_blog.Context;
 using dotnet_angular_blog.Model;
+using dotnet_angular_blog.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +47,7 @@ namespace dotnet_angular_blog.Controllers
       return Ok(post);
     }
 
+    [Authorize(Roles = UserRoles.Admin)]
     [HttpPost]
     public async Task<IActionResult> CreatePost([FromBody] Post post)
     {
@@ -70,6 +75,13 @@ namespace dotnet_angular_blog.Controllers
       // Update the Post object's Categories property to contain the added categories.
       post.Categories = categories;
 
+      // author
+      // var userName = User.Identity.Name;
+      // var user = await _userManager.FindByNameAsync(userName);
+      // var userProfileId = user.ProfileId;
+
+      // post.Author = user.Id;
+
       // Add the post to the database context and save changes to the database.
       _context.Posts.Add(post);
       await _context.SaveChangesAsync();
@@ -78,6 +90,7 @@ namespace dotnet_angular_blog.Controllers
       return CreatedAtAction("GetById", new { id = post.Id }, post);
     }
 
+    [Authorize(Roles = UserRoles.Admin)]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePost([FromBody] Post post, int id)
     {
@@ -114,7 +127,7 @@ namespace dotnet_angular_blog.Controllers
       postDto.ReadingTime = post.ReadingTime;
       postDto.Categories = categories;
       postDto.EnumPostPermission = post.EnumPostPermission;
-      postDto.Author = post.Author;
+      // postDto.Author = post.Author;
 
       _context.Posts.Update(postDto);
       await _context.SaveChangesAsync();
@@ -122,6 +135,7 @@ namespace dotnet_angular_blog.Controllers
       return Ok(postDto);
     }
 
+    [Authorize(Roles = UserRoles.Admin)]
     [HttpDelete("{id}")]
     public async Task<ActionResult<Post>> DeletePost(int id)
     {

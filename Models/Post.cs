@@ -12,7 +12,6 @@ namespace dotnet_angular_blog.Model
     public int ReadingTime { get; set; }
 
     public virtual ICollection<Category> Categories { get; set; }
-    // public virtual ICollection<PostCategory> PostCategories { get; set; }
 
     public DateTime PostedAt { get; set; }
     public EnumPostPermission EnumPostPermission { get; set; }

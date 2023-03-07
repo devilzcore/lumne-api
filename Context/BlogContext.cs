@@ -1,6 +1,8 @@
 using dotnet_angular_blog.Model;
 using dotnet_angular_blog.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace dotnet_angular_blog.Context
 {
@@ -10,8 +12,8 @@ namespace dotnet_angular_blog.Context
     {
     }
 
-    public DbSet<User> Users { get; set; }
-    public DbSet<UserProfile> UserProfiles { get; set; }
+    // public DbSet<User> Users { get; set; }
+    // public DbSet<UserProfile> UserProfiles { get; set; }
     public DbSet<Post> Posts { get; set; }
     public DbSet<Category> Categories { get; set; }
 
