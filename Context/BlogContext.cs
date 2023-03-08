@@ -8,31 +8,37 @@ namespace dotnet_angular_blog.Context
 {
   public class BlogContext : DbContext
   {
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Category> Categories { get; set; }
+
     public BlogContext(DbContextOptions<BlogContext> options) : base(options)
     {
     }
 
-    // public DbSet<User> Users { get; set; }
-    // public DbSet<UserProfile> UserProfiles { get; set; }
-    public DbSet<Post> Posts { get; set; }
-    public DbSet<Category> Categories { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      // base.OnModelCreating(modelBuilder);
+      // modelBuilder.Entity<User>()
+      // .HasOne(u => u.Profile)
+      // .WithOne(p => p.User)
+      // .HasForeignKey<UserProfile>(p => p.UserId);
 
-      // modelBuilder.Entity<PostCategory>()
-      //   .HasKey(pc => new { pc.PostId, pc.CategoryId });
+      // modelBuilder.Entity<UserProfile>()
+      // .HasMany(p => p.Posts)
+      // .WithOne(post => post.Author)
+      // .HasForeignKey(post => post.UserProfileId);
 
-      // modelBuilder.Entity<PostCategory>()
-      //   .HasOne(pc => pc.Post)
-      //   .WithMany(p => p.PostCategories)
-      //   .HasForeignKey(pc => pc.PostId);
+      // modelBuilder.Entity<Post>()
+      // .HasMany(post => post.Categories)
+      // .WithMany(category => category.Posts);
 
-      // modelBuilder.Entity<PostCategory>()
-      //   .HasOne(pc => pc.Category)
-      //   .WithMany(p => p.PostCategories)
-      //   .HasForeignKey(pc => pc.CategoryId);
+      base.OnModelCreating(modelBuilder);
+
+      // modelBuilder.Entity<Post>()
+      //   .HasOne(p => p.Author)
+      //   .WithMany(u => u.Posts)
+      //   .HasForeignKey(p => p.AuthorId);
+
+      // modelBuilder.Entity<UserProfile>().ToTable("UserProfile", "dbo");
     }
   }
 }

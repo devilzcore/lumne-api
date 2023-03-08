@@ -14,7 +14,5 @@ namespace dotnet_angular_blog.Models
 
     [Required(ErrorMessage = "Password is required")]
     public string Password { get; set; }
-
-    public virtual UserProfile Profile { get; set; }
   }
 }

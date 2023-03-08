@@ -15,6 +15,9 @@ namespace dotnet_angular_blog.Model
 
     public DateTime PostedAt { get; set; }
     public EnumPostPermission EnumPostPermission { get; set; }
-    public UserProfile Author { get; set; }
+
+    public string Author { get; set; }
+    // public int UserProfileId { get; set; }
+    // public UserProfile Author { get; set; }
   }
 }

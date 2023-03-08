@@ -3,7 +3,6 @@ using dotnet_angular_blog.Context;
 using dotnet_angular_blog.Model;
 using dotnet_angular_blog.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +14,9 @@ namespace dotnet_angular_blog.Controllers
   {
     private readonly BlogContext _context;
 
-    public PostController(BlogContext context)
+    public PostController(
+      BlogContext context
+      )
     {
       _context = context;
     }
@@ -75,12 +76,9 @@ namespace dotnet_angular_blog.Controllers
       // Update the Post object's Categories property to contain the added categories.
       post.Categories = categories;
 
-      // author
-      // var userName = User.Identity.Name;
-      // var user = await _userManager.FindByNameAsync(userName);
-      // var userProfileId = user.ProfileId;
-
-      // post.Author = user.Id;
+      // Author get userName auth
+      string author = User.Identity.Name;
+      post.Author = author;
 
       // Add the post to the database context and save changes to the database.
       _context.Posts.Add(post);

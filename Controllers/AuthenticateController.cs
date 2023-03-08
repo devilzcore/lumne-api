@@ -20,10 +20,10 @@ namespace dotnet_angular_blog.Controllers
     private readonly IConfiguration _configuration;
 
     public AuthenticateController(
-        UserManager<IdentityUser> userManager,
-        RoleManager<IdentityRole> roleManager,
-        IConfiguration configuration
-        )
+      UserManager<IdentityUser> userManager,
+      RoleManager<IdentityRole> roleManager,
+      IConfiguration configuration
+    )
     {
       _userManager = userManager;
       _roleManager = roleManager;
