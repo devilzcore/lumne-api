@@ -1,0 +1,44 @@
+.blog-card
+{
+  width: 55rem;
+  height: 10rem;
+
+  background-color: grey;
+  border-radius: 5px;
+  margin: 10px;
+
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 1rem;
+  }
+
+  &__title h2 {
+    padding: 0;
+    margin: 0;
+  }
+
+  &__image {
+    width: 15.625rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__categories {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+    &__category {
+      margin-right: 10px;
+    }
+}
