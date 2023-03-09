@@ -18,16 +18,19 @@ namespace dotnet_angular_blog.Controllers
     private readonly UserManager<IdentityUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IConfiguration _configuration;
+    private readonly UserContext _context;
 
     public AuthenticateController(
       UserManager<IdentityUser> userManager,
       RoleManager<IdentityRole> roleManager,
-      IConfiguration configuration
+      IConfiguration configuration,
+      UserContext context
     )
     {
       _userManager = userManager;
       _roleManager = roleManager;
       _configuration = configuration;
+      _context = context;
     }
 
     [HttpPost]
@@ -91,6 +94,15 @@ namespace dotnet_angular_blog.Controllers
           Message = "User creation failed! Please check user details and try again."
         });
 
+      // Create new userProfile
+      var userProfile = new UserProfile
+      {
+        User = user
+      };
+
+      _context.UserProfiles.Add(userProfile);
+      await _context.SaveChangesAsync();
+
       return Ok(new Response { Status = "Success", Message = "User created successfully!" });
     }
 
@@ -136,6 +148,15 @@ namespace dotnet_angular_blog.Controllers
       {
         await _userManager.AddToRoleAsync(user, UserRoles.User);
       }
+
+      // Create new userProfile
+      var userProfile = new UserProfile
+      {
+        User = user
+      };
+
+      _context.UserProfiles.Add(userProfile);
+      await _context.SaveChangesAsync();
 
       return Ok(new Response { Status = "Success", Message = "User created successfully!" });
     }
