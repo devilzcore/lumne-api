@@ -7,10 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace dotnet_angular_blog.Context
 {
   public class UserContext : IdentityDbContext<IdentityUser>
-  // public class UserContext : IdentityDbContext<User>
   {
-    // public DbSet<UserProfile> UserProfiles { get; set; }
-
     public UserContext(DbContextOptions<UserContext> options) : base(options)
     {
     }
@@ -18,8 +15,6 @@ namespace dotnet_angular_blog.Context
     protected override void OnModelCreating(ModelBuilder builder)
     {
       base.OnModelCreating(builder);
-      // builder.Entity<Post>().ToTable("Post", "dbo");
-      // builder.Entity<Category>().ToTable("Category", "dbo");
     }
   }
 }
