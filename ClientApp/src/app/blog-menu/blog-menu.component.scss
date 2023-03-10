@@ -1,0 +1,20 @@
+.blog-menu {
+  height: 3.125rem;
+  background-color: antiquewhite;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__links a {
+    margin: auto .75rem;
+    color: black;
+    text-decoration: none;
+  }
+}
