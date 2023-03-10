@@ -7,6 +7,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogCardComponent } from './blog-card/blog-card.component';
 import { BlogMenuComponent } from './blog-menu/blog-menu.component';
 import { BlogLoginComponent } from './blog-login/blog-login.component';
+import { BlogHomeComponent } from './blog-home/blog-home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BlogLoginComponent } from './blog-login/blog-login.component';
     BlogListComponent,
     BlogCardComponent,
     BlogMenuComponent,
-    BlogLoginComponent
+    BlogLoginComponent,
+    BlogHomeComponent
   ],
   imports: [
     BrowserModule,
