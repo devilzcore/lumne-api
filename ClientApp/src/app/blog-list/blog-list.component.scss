@@ -1,4 +1,12 @@
-\:host {
+:host {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.blog-list {
+
+  h2 {
+    margin-left: .75rem;
+  }
 }
