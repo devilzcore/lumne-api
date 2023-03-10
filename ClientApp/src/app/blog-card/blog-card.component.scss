@@ -3,7 +3,6 @@
   width: 55rem;
   height: 10rem;
 
-  background-color: grey;
   border-radius: .3125rem;
   margin: .625rem;
 
@@ -38,7 +37,8 @@
     flex-wrap: wrap;
   }
 
-    &__category {
-      margin-right: 10px;
-    }
+  &__category a {
+    text-decoration: none;
+    margin-right: 10px;
+  }
 }
