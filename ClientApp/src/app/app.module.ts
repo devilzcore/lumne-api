@@ -9,6 +9,7 @@ import { BlogMenuComponent } from './blog-menu/blog-menu.component';
 import { BlogLoginComponent } from './blog-login/blog-login.component';
 import { BlogHomeComponent } from './blog-home/blog-home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BlogPostComponent } from './blog-post/blog-post.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BlogMenuComponent,
     BlogLoginComponent,
     BlogHomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    BlogPostComponent
   ],
   imports: [
     BrowserModule,
