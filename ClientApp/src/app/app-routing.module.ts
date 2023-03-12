@@ -4,12 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { BlogHomeComponent } from './blog-home/blog-home.component';
 import { BlogLoginComponent } from './blog-login/blog-login.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { BlogCardComponent } from './blog-card/blog-card.component';
+
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', component: BlogHomeComponent },
   { path: 'login', component: BlogLoginComponent },
   { path: 'post', component: BlogPostComponent },
+  { path: 'card', component: BlogCardComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
