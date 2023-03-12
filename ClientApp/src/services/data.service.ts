@@ -12,7 +12,7 @@ import { Post } from '../models/post'
 })
 
 export class DataService {
-  url = `{environment.apiUrl}Post`
+  url = `${environment.apiUrl}Post/`
 
   constructor(private httpClient: HttpClient) { }
 
