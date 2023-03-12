@@ -10,6 +10,8 @@ import { BlogLoginComponent } from './blog-login/blog-login.component';
 import { BlogHomeComponent } from './blog-home/blog-home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
