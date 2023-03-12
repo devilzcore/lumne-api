@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
+import { environment } from '../environments/environment'
+
 import { Post } from '../models/post'
 
 @Injectable({
@@ -10,7 +12,7 @@ import { Post } from '../models/post'
 })
 
 export class DataService {
-  url = `{environments.apiUrl}Post`
+  url = `{environment.apiUrl}Post`
 
   constructor(private httpClient: HttpClient) { }
 
