@@ -20,7 +20,11 @@ export class BlogLoginComponent implements OnInit {
     withCredentials: false,
   };
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -37,7 +41,14 @@ export class BlogLoginComponent implements OnInit {
 
     this.http.post<any>(`${environment.apiUrl}Authenticate/login`, data, this.httpOptions)
       .subscribe(res =>
-      { return console.log(res)},
-        (error) => { console.error(error) })
+      {
+        const goPost = this.router.navigate(['/post'])
+        console.log(res)
+
+        return goPost
+      },
+        (error) => {
+          console.error(error)
+        })
   }
 }
