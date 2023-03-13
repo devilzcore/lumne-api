@@ -17,9 +17,7 @@
     </div>
 
       <div class="blog-card__categories">
-        <div class="blog-card__category blog-card__category--games"><a href="">Games</a></div>
-        <div class="blog-card__category blog-card__category--esport"><a href="">E-sport</a></div>
-        <div class="blog-card__category blog-card__category--pcgamer"><a href="">PC Gamer</a></div>
+        <div class="blog-card__category blog-card__category--games"><a href="" *ngFor="let category of post.categories">{{ category.name }}</a></div>
       </div>
   </div>
 
