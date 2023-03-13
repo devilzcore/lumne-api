@@ -24,7 +24,8 @@ namespace dotnet_angular_blog.Controllers
     [HttpGet]
     public IEnumerable<Post> GetAllPosts()
     {
-      return _context.Posts.ToList();
+      // return _context.Posts.ToList();
+      return _context.Posts.Include(p => p.Categories).ToList();
     }
 
     [HttpGet("{id}")]
