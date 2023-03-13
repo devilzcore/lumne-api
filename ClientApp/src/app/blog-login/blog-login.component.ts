@@ -1,9 +1,8 @@
-import { environment } from 'src/environments/environment';
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/services/auth.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-blog-login',
@@ -11,44 +10,51 @@ import { Router } from '@angular/router';
   styleUrls: ['./blog-login.component.scss']
 })
 export class BlogLoginComponent implements OnInit {
-  public loginForm !: FormGroup
-
-  private httpOptions = {
-    headers: new HttpHeaders({
-       'Content-Type': 'application/json',
-     }),
-    withCredentials: false,
-  };
+  loginForm!: FormGroup
+  loading = false
+  submitted = false
+  returnUrl!: string
+  error = ''
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      username: [''],
-      password: ['', Validators.required]
-    })
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/login'])
+    }
   }
 
-  login() {
-    const data = {
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/post'
+  }
+
+  get f() { return this.loginForm.controls }
+
+  onSubmit() {
+    this.submitted = true
+
+    if (this.loginForm.invalid) {
+      return
     }
 
-    this.http.post<any>(`${environment.apiUrl}Authenticate/login`, data, this.httpOptions)
-      .subscribe(res =>
-      {
-        const goPost = this.router.navigate(['/post'])
-        console.log(res)
-
-        return goPost
-      },
-        (error) => {
-          console.error(error)
+    this.loading = true
+    this.authenticationService.login(this.f['username'].value, this.f['password'].value)
+      .pipe(first())
+      .subscribe (
+        data => {
+          this.router.navigate([this.returnUrl])
+        },
+        error => {
+          this.error = error
+          this.loading = false
         })
   }
 }
