@@ -1,3 +1,5 @@
+import { Category } from "./category";
+
 export interface Post {
   id: number,
   title: string,
@@ -5,7 +7,7 @@ export interface Post {
   summary: string,
   content: string,
   readingTime: number,
-  categories: string[],
+  categories: Category[],
   postedAt: Date,
   enumPostPermission: string
 }
