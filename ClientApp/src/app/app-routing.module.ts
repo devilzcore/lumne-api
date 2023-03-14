@@ -7,11 +7,12 @@ import { BlogPostComponent } from './blog-post/blog-post.component';
 import { BlogCardComponent } from './blog-card/blog-card.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from 'src/helpers/auth.guard';
 
 const routes: Routes = [
   { path: '', component: BlogHomeComponent },
   { path: 'login', component: BlogLoginComponent },
-  { path: 'post', component: BlogPostComponent },
+  { path: 'post', component: BlogPostComponent, canActivate: [AuthGuard] },
   { path: 'card', component: BlogCardComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
