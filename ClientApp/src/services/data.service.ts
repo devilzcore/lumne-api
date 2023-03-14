@@ -6,6 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../environments/environment'
 
 import { Post } from '../models/post'
+import { Category } from '../models/category'
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ import { Post } from '../models/post'
 
 export class DataService {
   url = `${environment.apiUrl}Post/`
+  urlCategory = `${environment.apiUrl}Category/`
 
   constructor(private httpClient: HttpClient) { }
 
@@ -54,6 +56,46 @@ export class DataService {
 
   deletePost(post: Post) {
     return this.httpClient.delete<Post>(this.url + '/' + post.id, this.HttpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+    )
+  }
+
+  getAllCategories(): Observable<Category[]> {
+    return this.httpClient.get<Category[]>(this.urlCategory)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  getCategoryId(id: number): Observable<Category> {
+    return this.httpClient.get<Category>(this.urlCategory + "/" + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
+  saveCategory(category: Category): Observable<Category> {
+    return this.httpClient.post<Category>(this.urlCategory, JSON.stringify(category), this.HttpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+    )
+  }
+
+  updateCategory(category: Category): Observable<Category> {
+    return this.httpClient.put<Category>(this.urlCategory + '/' + category.id, JSON.stringify(category), this.HttpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
+  deleteCategory(category: Category) {
+    return this.httpClient.delete<Category>(this.urlCategory + '/' + category.id, this.HttpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
