@@ -1,15 +1,14 @@
 <div class="blog-post">
   <h2>Add a new blog post</h2>
-  <form action="">
-    <label for="">Title</label>
-    <input type="text">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+    <label for="title">Title</label>
+    <input formControlName="title" class="form-control" type="text">
     <label for="">Category</label>
     <select>
-      <option value="" *ngFor="let category of categories">{{ category.name }}</option>
+      <option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</option>
     </select>
-    <label for="">Content</label>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <label for="content">Content</label>
+    <textarea formControlName="content" class="form-control" name="" id="" cols="30" rows="10"></textarea>
+    <button>Publish</button>
   </form>
-
-  <button>Publish</button>
 </div>
