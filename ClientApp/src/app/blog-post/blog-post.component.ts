@@ -1,8 +1,11 @@
+import { AuthenticationService } from './../../services/auth.service';
 import { Category } from './../../models/category';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Post } from 'src/models/post';
+import { User } from 'src/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-post',
@@ -15,10 +18,14 @@ export class BlogPostComponent implements OnInit {
 
   postForm!: FormGroup
 
+  currentUser?: User
+
   constructor(
     private formBuilder: FormBuilder,
     private categoryService: DataService,
-    private postService: DataService
+    private postService: DataService,
+    private router: Router,
+    private authenticationService: AuthenticationService
   ) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -26,7 +33,9 @@ export class BlogPostComponent implements OnInit {
       summary: [''],
       content: ['']
     })
-   }
+
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
+  }
 
   ngOnInit() {
     this.getCategories()
@@ -54,4 +63,8 @@ export class BlogPostComponent implements OnInit {
     })
   }
 
+  logout() {
+    this.authenticationService.logout()
+    this.router.navigate(['/login'])
+  }
 }

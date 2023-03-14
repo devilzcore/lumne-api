@@ -1,4 +1,9 @@
 <div class="blog-post">
+  <div>
+    {{ currentUser }}
+    <button (click)="logout()">logout</button>
+  </div>
+
   <h2>Add a new blog post</h2>
   <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
     <label for="title">Title</label>
