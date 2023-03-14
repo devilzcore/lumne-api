@@ -23,7 +23,7 @@ export class BlogLoginComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/post'])
     }
   }
 
