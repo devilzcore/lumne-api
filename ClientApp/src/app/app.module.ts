@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BlogPostComponent } from './blog-post/blog-post.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     BlogLoginComponent,
     BlogHomeComponent,
     PageNotFoundComponent,
-    BlogPostComponent
+    BlogPostComponent,
+    BlogPostsComponent
   ],
   imports: [
     BrowserModule,
