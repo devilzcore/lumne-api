@@ -13,8 +13,8 @@ import { Category } from '../models/category'
 })
 
 export class DataService {
-  url = `${environment.apiUrl}Post/`
-  urlCategory = `${environment.apiUrl}Category/`
+  url = `${environment.apiUrl}Post`
+  urlCategory = `${environment.apiUrl}Category`
 
   constructor(private httpClient: HttpClient) { }
 
