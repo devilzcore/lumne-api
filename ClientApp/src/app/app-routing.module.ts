@@ -1,3 +1,4 @@
+import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: '', component: BlogHomeComponent },
   { path: 'login', component: BlogLoginComponent },
   { path: 'post', component: BlogPostComponent, canActivate: [AuthGuard] },
+  { path: 'posts/:id', component: BlogPostsComponent },
   { path: 'card', component: BlogCardComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
