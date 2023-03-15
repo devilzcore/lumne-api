@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'login', component: BlogLoginComponent },
   { path: 'post', component: BlogPostComponent, canActivate: [AuthGuard] },
   { path: 'posts/:id', component: BlogPostsComponent },
+  { path: 'posts/:id/:title?', component: BlogPostsComponent },
   { path: 'card', component: BlogCardComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
