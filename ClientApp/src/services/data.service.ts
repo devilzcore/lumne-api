@@ -38,6 +38,14 @@ export class DataService {
       )
   }
 
+  getPostByCategories(category: string): Observable<Post> {
+    return this.httpClient.get<Post>(this.url + "/category" + category)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      )
+  }
+
   savePost(post: Post): Observable<Post> {
     return this.httpClient.post<Post>(this.url, JSON.stringify(post), this.HttpOptions)
       .pipe(
