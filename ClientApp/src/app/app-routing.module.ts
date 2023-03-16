@@ -9,11 +9,13 @@ import { BlogCardComponent } from './blog-card/blog-card.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from 'src/helpers/auth.guard';
+import { BlogCategoryComponent } from './blog-category/blog-category.component';
 
 const routes: Routes = [
   { path: '', component: BlogHomeComponent },
   { path: 'login', component: BlogLoginComponent },
   { path: 'post', component: BlogPostComponent, canActivate: [AuthGuard] },
+  { path: 'posts/category/:category', component: BlogCategoryComponent },
   { path: 'posts/:id', component: BlogPostsComponent },
   { path: 'posts/:id/:title?', component: BlogPostsComponent },
   { path: 'card', component: BlogCardComponent },
