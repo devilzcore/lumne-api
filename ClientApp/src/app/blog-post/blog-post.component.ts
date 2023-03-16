@@ -31,7 +31,8 @@ export class BlogPostComponent implements OnInit {
       title: ['', Validators.required],
       image: [''],
       summary: [''],
-      content: ['']
+      content: [''],
+      category: ['']
     })
 
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x)
@@ -50,10 +51,14 @@ export class BlogPostComponent implements OnInit {
   }
 
   onSubmit() {
+    const categories: Category[] = [{
+      name: this.postForm.controls['category'].value
+    }];
+
     const post: Post = {
       title: this.postForm.controls['title'].value,
       content: this.postForm.controls['content'].value,
-      categories: []
+      categories: categories
     }
 
     this.postService.savePost(post)
