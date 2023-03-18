@@ -4,22 +4,30 @@
   </div>
 
   <div class="blog-card__content">
+    <div class="blog-card__categories">
+      <div
+        *ngFor="let category of post.categories"
+        [ngClass]="'blog-card__category blog-card__category--' + category.name"
+      >
+        <a href="">
+          {{ category.name }}
+        </a>
+      </div>
+    </div>
+
     <div class="blog-card__title">
-      {{ post.title }}
+      <h2>{{ post.title }}</h2>
     </div>
 
     <div class="blog-card__summary">
       <p>
-        {{ post.content }}
-        <br />
-        <a [routerLink]="postUrl">Read more..</a>
+        {{ post.summary }}
       </p>
     </div>
 
-      <div class="blog-card__categories">
-        <div class="blog-card__category blog-card__category--games"><a href="" *ngFor="let category of post.categories">{{ category.name }}</a></div>
-      </div>
-  </div>
+    <div class="blog-card__date">
+      {{ post.postedAt }}
+    </div>
 
-
+  <!-- <a [routerLink]="postUrl">Read more..</a> -->
 </div>
