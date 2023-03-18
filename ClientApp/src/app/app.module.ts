@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 import { BlogCategoryComponent } from './blog-category/blog-category.component';
+import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BlogCategoryComponent } from './blog-category/blog-category.component';
     PageNotFoundComponent,
     BlogPostComponent,
     BlogPostsComponent,
-    BlogCategoryComponent
+    BlogCategoryComponent,
+    BlogCategoriesComponent
   ],
   imports: [
     BrowserModule,
