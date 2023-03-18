@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Post } from 'src/models/post';
 
 @Component({
   selector: 'app-blog-categories',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./blog-categories.component.scss']
 })
 export class BlogCategoriesComponent {
+  @Input() post!: Post
 
 }
