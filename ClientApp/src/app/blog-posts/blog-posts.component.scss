@@ -1,0 +1,40 @@
+$primary-black-color: #000000;
+$primary-white-color: #ffff;
+
+.blog-posts {
+  background-color: $primary-black-color;
+  color: $primary-white-color;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 4.0625rem;
+  }
+
+  &__post {
+    width: 48.75rem;
+  }
+
+  &__image {
+    max-width: auto;
+    height: 441px;
+  }
+
+  &--reading {
+  }
+
+  &--date {
+    font-weight: lighter;
+    font-size: 12px;
+  }
+
+  &----summary {
+    font-size: 17px;
+  }
+
+  &__content {
+    font-size: 17px;
+  }
+
+}
