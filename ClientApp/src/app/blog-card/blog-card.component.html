@@ -5,14 +5,7 @@
 
   <div class="blog-card__content">
     <div class="blog-card__categories">
-      <div
-        *ngFor="let category of post.categories"
-        [ngClass]="'blog-card__category blog-card__category--' + category.name"
-      >
-        <a href="">
-          {{ category.name }}
-        </a>
-      </div>
+      <app-blog-categories [post]="post"></app-blog-categories>
     </div>
 
     <div class="blog-card__title">

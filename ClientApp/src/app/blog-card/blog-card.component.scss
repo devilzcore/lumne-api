@@ -39,34 +39,6 @@ $category-anime-color: #000575;
     height: auto;
   }
 
-  &__categories {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  &__category {
-    width: 60px;
-    height: 20px;
-    margin-right: 10px;
-    border-radius: 5%;
-    text-align: center;
-  }
-
-  &__category a {
-    text-decoration: none;
-    font-size: 10px;
-    color: $category-link-color;
-    font-weight: regular;
-  }
-
-  &__category--e2 {
-    background-color: $category-pcgamer-color;
-  }
-
- &__category--e3 {
-    background-color: $category-anime-color;
-  }
-
   &___summary p {
     font-size: 14px;
     font-weight: regular;
