@@ -1,6 +1,9 @@
+$primary-menu-color: #0B0A0A;
+$primary-whiter-color: #ffff;
+
 .blog-menu {
+  margin-top: .9375rem;
   height: 3.125rem;
-  background-color: #1f1f1f;
 
   position: fixed;
   top: 0;
@@ -10,6 +13,15 @@
   flex-direction: row;
   justify-content: center;
 
+  &__container {
+    width: 82rem;
+    background-color: $primary-menu-color;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+  }
+
   &__links {
     display: flex;
     flex-direction: row;
@@ -17,8 +29,9 @@
   }
 
   &__links a {
+    font-weight: regular;
     margin: auto .75rem;
-    color: #ffff;
+    color: $primary-whiter-color;
     text-decoration: none;
     text-transform: uppercase;
   }
