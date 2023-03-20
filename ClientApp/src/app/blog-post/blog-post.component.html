@@ -5,7 +5,9 @@
   </div>
 
   <h2>Add a new blog post</h2>
-  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="postForm">
+    <label for="id">Id</label>
+    <input formControlName="id" class="form-control" type="text">
     <label for="title">Title</label>
     <input formControlName="title" class="form-control" type="text">
     <label for="">Category</label>
@@ -14,6 +16,8 @@
     </select>
     <label for="content">Content</label>
     <textarea formControlName="content" class="form-control" name="" id="" cols="30" rows="10"></textarea>
-    <button>Publish</button>
+    <button (click)="savePost()">Publish</button>
+    <button (click)="updatePost()">Edit</button>
+    <button (click)="deletePost()">Delete</button>
   </form>
 </div>

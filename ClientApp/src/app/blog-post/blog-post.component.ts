@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
 import { Router } from '@angular/router';
+import { map, catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-blog-post',
@@ -28,6 +29,7 @@ export class BlogPostComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     this.postForm = this.formBuilder.group({
+      id: [''],
       title: ['', Validators.required],
       image: [''],
       summary: [''],
@@ -50,22 +52,40 @@ export class BlogPostComponent implements OnInit {
       })
   }
 
-  onSubmit() {
+  post() {
     const categories: Category[] = [{
       name: this.postForm.controls['category'].value
     }];
 
     const post: Post = {
+      id: this.postForm.controls['id'].value[0],
       title: this.postForm.controls['title'].value,
       content: this.postForm.controls['content'].value,
       categories: categories
     }
 
-    this.postService.savePost(post)
+    return post
+  }
+
+  savePost() {
+    this.postService.savePost(this.post())
       .subscribe(post => {
-        console.log('Save..')
+        console.log('Save..', post)
         this.postForm.reset()
-    })
+      })
+  }
+
+  updatePost() {
+    this.postService.getPostId(this.post().id!)
+      .subscribe((post) => {
+        this.postService.updatePost(post)
+          .subscribe(post => { console.log('Edit..', post) })
+      })
+  }
+
+  deletePost() {
+    this.postService.deletePost(this.post())
+      .subscribe(post => console.log('deleted..', post))
   }
 
   logout() {
