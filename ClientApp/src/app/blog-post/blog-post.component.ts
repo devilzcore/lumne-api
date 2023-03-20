@@ -29,7 +29,7 @@ export class BlogPostComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     this.postForm = this.formBuilder.group({
-      id: [''],
+      id: ['0'],
       title: ['', Validators.required],
       image: [''],
       summary: [''],
@@ -58,7 +58,7 @@ export class BlogPostComponent implements OnInit {
     }];
 
     const post: Post = {
-      id: this.postForm.controls['id'].value[0],
+      id: this.postForm.controls['id'].value,
       title: this.postForm.controls['title'].value,
       content: this.postForm.controls['content'].value,
       categories: categories
