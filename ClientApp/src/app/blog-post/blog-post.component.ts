@@ -52,6 +52,15 @@ export class BlogPostComponent implements OnInit {
       })
   }
 
+  addCategoryInSelect() {
+    const newValue = prompt("New value:")
+    if (newValue != null) {
+      const select = document.getElementById("category") as HTMLSelectElement
+      const option = new Option(newValue, newValue)
+      select.add(option)
+    }
+  }
+
   post() {
     const categories: Category[] = [{
       name: this.postForm.controls['category'].value
