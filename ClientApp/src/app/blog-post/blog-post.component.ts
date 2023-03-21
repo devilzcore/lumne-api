@@ -60,6 +60,7 @@ export class BlogPostComponent implements OnInit {
     const post: Post = {
       id: this.postForm.controls['id'].value,
       title: this.postForm.controls['title'].value,
+      image: this.postForm.controls['image'].value,
       content: this.postForm.controls['content'].value,
       categories: categories
     }
