@@ -37,8 +37,8 @@ $category-anime-color: #000575;
   }
 
   &__image {
-    width: 21.5rem;
-    height: 14.5625rem;
+    max-width: 21.5rem;
+    max-height: 14.5625rem;
     display: flex;
     justify-content: center;
   }
