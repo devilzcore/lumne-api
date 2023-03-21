@@ -11,10 +11,11 @@ import { format } from 'date-fns';
   styleUrls: ['./blog-card.component.scss']
 })
 
-export class BlogCardComponent {
+export class BlogCardComponent implements OnInit {
   @Input() post!: Post
 
   postUrl: string | undefined
+  dateStr: string | undefined
 
   constructor() { }
 
@@ -24,8 +25,8 @@ export class BlogCardComponent {
 
   ngOnInit() {
     const slug = slugify(this.post.title!)
-    const dateStr = this.formatDate(new Date(this.post.postedAt!))
-    this.postUrl = `/posts/${dateStr}/${this.post.id}-${slug}`
+    this.dateStr = this.formatDate(new Date(this.post.postedAt!))
+    this.postUrl = `/posts/${this.post.id}/${slug}`
   }
 }
 

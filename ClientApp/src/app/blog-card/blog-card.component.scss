@@ -13,6 +13,15 @@ $category-anime-color: #000575;
 
   display: flex;
 
+  &__link {
+    text-decoration: none;
+    color: $category-link-color;
+  }
+
+  &__link h2:hover {
+    color: blue;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
