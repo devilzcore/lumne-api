@@ -1,13 +1,14 @@
 import { slugify } from 'src/helpers/string.utils';
 import { ActivatedRoute } from '@angular/router';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Post } from 'src/models/post';
 import { DataService } from 'src/services/data.service';
 
 @Component({
   selector: 'app-blog-posts',
   templateUrl: './blog-posts.component.html',
-  styleUrls: ['./blog-posts.component.scss']
+  styleUrls: ['./blog-posts.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BlogPostsComponent implements OnInit {
   // post!: Post
