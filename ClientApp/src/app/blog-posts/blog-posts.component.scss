@@ -17,11 +17,12 @@ $primary-white-color: #ffff;
 
   &__post {
     width: 48.75rem;
+    overflow: hidden;
   }
 
   &__image {
-    max-width: auto;
-    height: 441px;
+    max-width: 100%;
+    height: auto;
   }
 
   &--reading {
@@ -39,5 +40,4 @@ $primary-white-color: #ffff;
   &__content {
     font-size: 17px;
   }
-
 }
