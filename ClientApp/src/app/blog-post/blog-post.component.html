@@ -23,4 +23,21 @@
     <button (click)="deletePost()">Delete</button>
     <button (click)="addCategoryInSelect()">Add new category</button>
   </form>
+
+<h1>TinyMCE 5 Angular Demo</h1>
+<editor [init]="{
+    selector: 'textarea#default',
+     height: 500,
+     menubar: false,
+     plugins: [
+       'advlist autolink lists link image charmap print preview anchor',
+       'searchreplace visualblocks code fullscreen',
+       'insertdatetime media table paste code help wordcount'
+     ],
+     toolbar:
+       'undo redo | formatselect | bold italic backcolor | \
+       alignleft aligncenter alignright alignjustify | \
+       bullist numlist outdent indent | removeformat | help'
+   }"></editor>
+
 </div>

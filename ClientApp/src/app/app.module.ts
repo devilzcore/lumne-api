@@ -17,6 +17,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BlogPostsComponent } from './blog-posts/blog-posts.component';
 import { BlogCategoryComponent } from './blog-category/blog-category.component';
 import { BlogCategoriesComponent } from './blog-categories/blog-categories.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { BlogCategoriesComponent } from './blog-categories/blog-categories.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditorModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
