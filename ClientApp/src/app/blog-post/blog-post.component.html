@@ -17,10 +17,12 @@
       <option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</option>
     </select>
     <label for="content">Content</label>
-    <textarea formControlName="content" class="form-control" name="" id="" cols="30" rows="10"></textarea>
+    <!-- <textarea formControlName="content" class="form-control" name="" id="" cols="30" rows="10"></textarea> -->
+    <angular-editor formControlName="content" [config]="editorConfig"></angular-editor>
     <button (click)="savePost()">Publish</button>
     <button (click)="updatePost()">Edit</button>
     <button (click)="deletePost()">Delete</button>
     <button (click)="addCategoryInSelect()">Add new category</button>
   </form>
+
 </div>
