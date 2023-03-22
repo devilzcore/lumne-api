@@ -40,4 +40,9 @@ $primary-white-color: #ffff;
   &__content {
     font-size: 17px;
   }
+
+  &__content img {
+    max-width: 100%;
+    height: auto;
+  }
 }
