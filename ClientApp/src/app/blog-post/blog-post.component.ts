@@ -125,11 +125,8 @@ export class BlogPostComponent implements OnInit {
   }
 
   updatePost() {
-    this.postService.getPostId(this.post().id!)
-      .subscribe((post) => {
-        this.postService.updatePost(post)
-          .subscribe(post => { console.log('Edit..', post) })
-      })
+    this.postService.updatePost(this.post())
+      .subscribe(post => { console.log('Edit..', this.post()) })
   }
 
   deletePost() {
