@@ -17,7 +17,5 @@ namespace dotnet_angular_blog.Model
     public EnumPostPermission EnumPostPermission { get; set; }
 
     public string Author { get; set; }
-    // public int UserProfileId { get; set; }
-    // public UserProfile Author { get; set; }
   }
 }
