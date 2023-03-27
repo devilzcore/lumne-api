@@ -76,6 +76,7 @@ namespace dotnet_angular_blog.Controllers
 
       // Update the Post object's Categories property to contain the added categories.
       post.Categories = categories;
+      post.PostedAt = DateTime.Now;
 
       // Author get userName auth
       string author = User.Identity.Name;
