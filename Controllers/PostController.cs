@@ -24,7 +24,6 @@ namespace dotnet_angular_blog.Controllers
     [HttpGet]
     public IEnumerable<Post> GetAllPosts()
     {
-      // return _context.Posts.ToList();
       return _context.Posts.Include(p => p.Categories).ToList();
     }
 
@@ -53,40 +52,31 @@ namespace dotnet_angular_blog.Controllers
     [HttpPost]
     public async Task<IActionResult> CreatePost([FromBody] Post post)
     {
-      // Create an empty categories list.
       var categories = new List<Category>();
 
-      // Loop through each category of the post.
       foreach (var categoryDto in post.Categories)
       {
-        // Check if the category already exists in the database context or not.
         var category = await _context.Categories
           .FirstOrDefaultAsync(c => c.Name == categoryDto.Name);
 
-        // If null, create a new Category and add it to the database context.
         if (category == null)
         {
           category = new Category { Name = categoryDto.Name };
           _context.Categories.Add(category);
         }
 
-        // Add the new/updated category to our list.
         categories.Add(category);
       }
 
-      // Update the Post object's Categories property to contain the added categories.
       post.Categories = categories;
       post.PostedAt = DateTime.Now;
 
-      // Author get userName auth
       string author = User.Identity.Name;
       post.Author = author;
 
-      // Add the post to the database context and save changes to the database.
       _context.Posts.Add(post);
       await _context.SaveChangesAsync();
 
-      // Return a HTTP CreatedAtAction response with the new Post object included, along with its Id.
       return CreatedAtAction("GetById", new { id = post.Id }, post);
     }
 
@@ -94,7 +84,6 @@ namespace dotnet_angular_blog.Controllers
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdatePost([FromBody] Post post, int id)
     {
-      // var postDto = _context.Posts.Find(id);
       var postDto = await _context.Posts
         .Include(p => p.Categories)
         .FirstOrDefaultAsync(p => p.Id == id);
@@ -127,7 +116,6 @@ namespace dotnet_angular_blog.Controllers
       postDto.ReadingTime = post.ReadingTime;
       postDto.Categories = categories;
       postDto.EnumPostPermission = post.EnumPostPermission;
-      // postDto.Author = post.Author;
 
       _context.Posts.Update(postDto);
       await _context.SaveChangesAsync();

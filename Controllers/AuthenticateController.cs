@@ -94,7 +94,6 @@ namespace dotnet_angular_blog.Controllers
           Message = "User creation failed! Please check user details and try again."
         });
 
-      // Create new userProfile
       var userProfile = new UserProfile
       {
         User = user
@@ -149,7 +148,6 @@ namespace dotnet_angular_blog.Controllers
         await _userManager.AddToRoleAsync(user, UserRoles.User);
       }
 
-      // Create new userProfile
       var userProfile = new UserProfile
       {
         User = user
