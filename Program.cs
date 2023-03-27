@@ -7,38 +7,32 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-// ConfigurationManager
+
 ConfigurationManager configuration = builder.Configuration;
 
-// Add services to the container.
-// Connection with postgres
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<BlogContext>(opt =>
-  opt.UseNpgsql(builder.Configuration.GetConnectionString("BlogDbConnection")));
+builder.Services.AddDbContext<BlogContext>(opt =>
+  opt.UseMySQL(builder.Configuration.GetConnectionString("BlogDbConnection")));
 
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<UserContext>(opt =>
-opt.UseNpgsql(builder.Configuration.GetConnectionString("BlogDbConnection")));
+builder.Services.AddDbContext<UserContext>(opt =>
+opt.UseMySQL(builder.Configuration.GetConnectionString("BlogDbConnection")));
 
-// Convert Enum for string Json
 builder.Services.AddControllers().AddJsonOptions(options =>
   options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
-// Ingore Cycles (fix error)
 builder.Services.AddControllers().AddJsonOptions(x =>
   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-// Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<UserContext>()
     .AddDefaultTokenProviders();
 
-// Auth
 builder.Services.AddAuthentication(options =>
 {
   options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
   options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
   options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
-// Add Jwt Bearer
+
 .AddJwtBearer(options =>
 {
   options.SaveToken = true;
@@ -53,7 +47,6 @@ builder.Services.AddAuthentication(options =>
   };
 });
 
-// Config Cors
 builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 {
   builder.AllowAnyOrigin()
@@ -62,13 +55,12 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
 }));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
   app.UseSwagger();
@@ -77,13 +69,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// To Cors
 app.UseCors("MyPolicy");
 
 app.Run();
