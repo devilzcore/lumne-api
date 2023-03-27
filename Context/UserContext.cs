@@ -17,8 +17,6 @@ namespace dotnet_angular_blog.Context
     protected override void OnModelCreating(ModelBuilder builder)
     {
       base.OnModelCreating(builder);
-      // builder.Entity<Post>().ToTable("Post", "dbo");
-      // builder.Entity<Category>().ToTable("Category", "dbo");
     }
   }
 }

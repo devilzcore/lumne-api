@@ -17,28 +17,7 @@ namespace dotnet_angular_blog.Context
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      // modelBuilder.Entity<User>()
-      // .HasOne(u => u.Profile)
-      // .WithOne(p => p.User)
-      // .HasForeignKey<UserProfile>(p => p.UserId);
-
-      // modelBuilder.Entity<UserProfile>()
-      // .HasMany(p => p.Posts)
-      // .WithOne(post => post.Author)
-      // .HasForeignKey(post => post.UserProfileId);
-
-      // modelBuilder.Entity<Post>()
-      // .HasMany(post => post.Categories)
-      // .WithMany(category => category.Posts);
-
       base.OnModelCreating(modelBuilder);
-
-      // modelBuilder.Entity<Post>()
-      //   .HasOne(p => p.Author)
-      //   .WithMany(u => u.Posts)
-      //   .HasForeignKey(p => p.AuthorId);
-
-      // modelBuilder.Entity<UserProfile>().ToTable("UserProfile", "dbo");
     }
   }
 }
