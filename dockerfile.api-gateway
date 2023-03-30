@@ -8,11 +8,11 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /App
 COPY --from=build-env /App/out .
 
-ENV ConnectionStrings__BlogDbConnection="server=db;port=3306;user=root;password=pass;database=default_db"
+ENV ConnectionStrings__BlogDbConnection="server=localhost;port=3306;user=root;password=pass;database=default_db"
 ENV JWT__ValidAudience="http://localhost:4200"
 ENV JWT__ValidIssuer="http://localhost:5000"
 ENV JWT__Secret="JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr"
 
-# EXPOSE 80
+EXPOSE 7257:7257
 
 ENTRYPOINT ["dotnet", "dotnet-angular-blog.dll"]
