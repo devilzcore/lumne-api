@@ -1,4 +1,3 @@
-using System.Net;
 using System.Text.Json.Serialization;
 using dotnet_angular_blog.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,11 +9,6 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 ConfigurationManager configuration = builder.Configuration;
-
-builder.WebHost.ConfigureKestrel(serverOptions =>
-{
-  serverOptions.Listen(IPAddress.Any, 7257);
-});
 
 builder.Services.AddDbContext<BlogContext>(opt =>
   opt.UseMySQL(builder.Configuration.GetConnectionString("BlogDbConnection")));
