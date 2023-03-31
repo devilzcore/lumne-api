@@ -12,6 +12,7 @@ ENV ConnectionStrings__BlogDbConnection="server=localhost;port=3306;user=root;pa
 ENV JWT__ValidAudience="http://localhost:4200"
 ENV JWT__ValidIssuer="http://localhost:5000"
 ENV JWT__Secret="JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr"
+ENV Kestrel__Endpoints__Https__Url="https://localhost:7257"
 
 EXPOSE 7257:7257
 
