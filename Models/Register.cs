@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using dotnet_angular_blog.Model;
+using lumne_api.Model;
 
-namespace dotnet_angular_blog.Models
+namespace lumne_api.Models
 {
   public class Register
   {

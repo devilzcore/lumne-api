@@ -1,6 +1,6 @@
-using dotnet_angular_blog.Models;
+using lumne_api.Models;
 
-namespace dotnet_angular_blog.Model
+namespace lumne_api.Model
 {
   public class Category
   {

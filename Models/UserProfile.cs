@@ -1,7 +1,7 @@
-using dotnet_angular_blog.Models;
+using lumne_api.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace dotnet_angular_blog.Model
+namespace lumne_api.Model
 {
   public class UserProfile
   {

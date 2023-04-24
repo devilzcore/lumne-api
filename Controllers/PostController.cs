@@ -1,12 +1,12 @@
 using System.Security.Claims;
-using dotnet_angular_blog.Context;
-using dotnet_angular_blog.Model;
-using dotnet_angular_blog.Models;
+using lumne_api.Context;
+using lumne_api.Model;
+using lumne_api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace dotnet_angular_blog.Controllers
+namespace lumne_api.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]

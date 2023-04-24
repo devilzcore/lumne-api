@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "dotnet_angular_blog": {
+    "lumne_api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

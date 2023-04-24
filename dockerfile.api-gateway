@@ -13,6 +13,10 @@ ENV JWT__ValidAudience="http://localhost:4200"
 ENV JWT__ValidIssuer="http://localhost:5000"
 ENV JWT__Secret="JWTAuthenticationHIGHsecuredPasswordVVVp1OH7Xzyr"
 ENV Kestrel__Endpoints__Https__Url="https://localhost:7257"
+ENV Kestrel__Endpoints__Http__Url="http://localhost:7257"
+ENV Kestrel__Endpoints__Https__Url="https://localhost:7258"
+ENV Kestrel__Endpoints__Https__Certificate__Path="./Certificates/cert.pem"
+ENV Kestrel__Endpoints__Https__Certificate__KeyPath="./Certificates/cert.pem"
 
 EXPOSE 7257:7257
 

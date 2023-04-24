@@ -1,10 +1,10 @@
-using dotnet_angular_blog.Model;
-using dotnet_angular_blog.Models;
+using lumne_api.Model;
+using lumne_api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace dotnet_angular_blog.Context
+namespace lumne_api.Context
 {
   public class UserContext : IdentityDbContext<IdentityUser>
   {

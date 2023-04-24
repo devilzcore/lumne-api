@@ -1,9 +1,9 @@
-using dotnet_angular_blog.Context;
-using dotnet_angular_blog.Model;
+using lumne_api.Context;
+using lumne_api.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace dotnet_angular_blog.Controllers
+namespace lumne_api.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]

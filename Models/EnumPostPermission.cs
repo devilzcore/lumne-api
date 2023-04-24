@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace dotnet_angular_blog.Model
+namespace lumne_api.Model
 {
   public enum EnumPostPermission
   {

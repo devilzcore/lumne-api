@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using dotnet_angular_blog.Context;
+using lumne_api.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
