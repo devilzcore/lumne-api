@@ -5,6 +5,7 @@
 
 Migrations/*
 Certificates/*
+out/*
 
 # User-specific files
 *.rsuser
