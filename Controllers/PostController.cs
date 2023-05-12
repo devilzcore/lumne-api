@@ -37,6 +37,20 @@ namespace lumne_api.Controllers
       return Ok(post);
     }
 
+    [HttpGet("page/{page}")]
+    public ActionResult GetByPage(int page)
+    {
+      var limitPosts = 4;
+      var posts = _context.Posts
+      .Include(p => p.Categories)
+      .OrderByDescending(x => x.Id)
+      .Skip(page)
+      .Take(limitPosts)
+      .ToList();
+
+      return Ok(posts);
+    }
+
     [HttpGet("category/{category}")]
     public ActionResult GetByCategory(string category)
     {
