@@ -14,13 +14,13 @@ builder.Services.AddDbContext<BlogContext>(opt =>
   opt.UseMySQL(builder.Configuration.GetConnectionString("BlogDbConnection")));
 
 builder.Services.AddDbContext<UserContext>(opt =>
-opt.UseMySQL(builder.Configuration.GetConnectionString("BlogDbConnection")));
+  opt.UseMySQL(builder.Configuration.GetConnectionString("BlogDbConnection")));
 
 builder.Services.AddControllers().AddJsonOptions(options =>
-  options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
-
-builder.Services.AddControllers().AddJsonOptions(x =>
-  x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+{
+  options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+  options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<UserContext>()
