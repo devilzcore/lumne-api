@@ -51,10 +51,11 @@ namespace lumne_api.Controllers
     public ActionResult GetByPage(int page)
     {
       var limitPosts = 4;
+      var skipPosts = (page - 1) * limitPosts;
       var posts = _context.Posts
       .Include(p => p.Categories)
       .OrderByDescending(x => x.Id)
-      .Skip(page)
+      .Skip(skipPosts)
       .Take(limitPosts)
       .ToList();
 
