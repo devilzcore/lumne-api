@@ -27,6 +27,16 @@ namespace lumne_api.Controllers
       return _context.Posts.Include(p => p.Categories).ToList();
     }
 
+    [HttpGet("search/{title}")]
+    public ActionResult GetById(string title)
+    {
+      var post = _context.Posts
+      .Where(p => p.Title.Contains(title))
+      .ToList();
+
+      return Ok(post);
+    }
+
     [HttpGet("{id}")]
     public ActionResult GetById(int id)
     {
