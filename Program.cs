@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text.Json.Serialization;
 using lumne_api.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -53,6 +54,17 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
   .AllowAnyMethod()
   .AllowAnyHeader();
 }));
+
+builder.WebHost.ConfigureKestrel((context, options) =>
+{
+  options.Configure(context.Configuration.GetSection("Kestrel"));
+  options.ListenAnyIP(7262, listenOptions =>
+  {
+    string cert = configuration["Kestrel:Certificates:Default:Path"];
+    string pass = configuration["Kestrel:Certificates:Default:Password"];
+    listenOptions.UseHttps(cert, pass);
+  });
+});
 
 builder.Services.AddControllers();
 
